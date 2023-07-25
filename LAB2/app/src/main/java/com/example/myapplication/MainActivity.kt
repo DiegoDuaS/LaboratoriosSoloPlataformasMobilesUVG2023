@@ -4,6 +4,12 @@ class MainActivity {
             val promedio = suma.toDouble() / lista.size
             return promedio
         }
+        fun pares(lista: List<Int>){
+            val pares = lista.filter { it % 2 == 0 }
+            println(pares)
+        }
+
+        fun 
     }
 
 fun main(){
