@@ -1,16 +1,32 @@
+//*********************
+//
+// Universidad del Valle de Guatemala
+// Diego Duarte 22075
+// 26/07/23
+//
+//*********************
+
+//Clase Data con parametros para persona
 data class Person(val name: String, val age: Int, val gender: String)
+
+//Clase Data con parametros para estudiante
 data class Student(val name: String, val age: Int, val gender: String, val
 studentId: String)
+
+//Clase MainActivty con funciones
 class MainActivity {
+        //Funcion Promedio con Parametros (Lista<Int>) y regresa un valor double
         fun Promedio(lista: List<Int>): Double{
             val suma = lista.reduce { acumulado, elemento -> acumulado + elemento }
             val promedio = suma.toDouble() / lista.size
             return promedio
         }
+        //Funcion Pares con Parametros (Lista<Int>) y regresa un valor Lista<Int>
         fun pares(lista: List<Int>): List<Int>{
             val pares = lista.filter { it % 2 == 0 }
             return pares
         }
+        //Funcion Palindrome con Parametros (String) y regresa un valor booleano
         fun Palindrome(input: String): Boolean {
             var pal = false
             if(input == input.reversed()){
@@ -18,6 +34,7 @@ class MainActivity {
             }
             return pal
         }
+        //Funcion Operacion con Parametros (Int, Int, String) y regresa un valor Int
         fun Operacion(numA: Int, numB: Int, lambda: String): Int{
             var resultado = 0
             if(lambda == "+"){
@@ -28,13 +45,13 @@ class MainActivity {
             }
             return resultado
         }
-
-    fun PersonaAEstduiante(person: Person): Student {
-        return Student(person.name, person.age, person.gender, "ID-${person.name.hashCode()}")
-    }
-
+        //Funcion PersonaAEstudiante con Parametros (Person) y regresa un valor Student
+        fun PersonaAEstduiante(person: Person): Student {
+            return Student(person.name, person.age, person.gender, "ID-${person.name.hashCode()}")
+        }
 }
 
+// Funcion Main para correr el código 
 fun main(){
 
     val mainActivity = MainActivity()
