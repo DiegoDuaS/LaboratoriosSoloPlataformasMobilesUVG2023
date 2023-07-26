@@ -29,6 +29,10 @@ class MainActivity {
             return resultado
         }
 
+    fun PersonaAEstduiante(person: Person): Student {
+        return Student(person.name, person.age, person.gender, "ID-${person.name.hashCode()}")
+    }
+
 }
 
 fun main(){
@@ -59,6 +63,14 @@ fun main(){
     val num2 = 5
     val resultado: Int = mainActivity.Operacion(num1,num2,"+")
     println("El resultado de la operacion es: $resultado")
+
+    println("\nEJERCICIO 5\n ")
+    val personas = listOf( Person("Esteban", 20, "Hombre"), Person("Checha", 19, "Hombre"), Person("Sofía", 19, "Mujer"))
+    val estudaiantes = personas.map { mainActivity.PersonaAEstduiante(it) }
+
+    for (estudiante in estudaiantes) {
+        println("El Estudiante ${estudiante.name} tiene ${estudiante.age} años")
+    }
 
 
 }
