@@ -51,7 +51,7 @@ class MainActivity {
         }
 }
 
-// Funcion Main para correr el código 
+// Funcion Main para correr el código
 fun main(){
 
     val mainActivity = MainActivity()
