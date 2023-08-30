@@ -5,18 +5,27 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,6 +39,8 @@ import com.example.lab5_diegoduarte.ui.theme.BlueCito
 import com.example.lab5_diegoduarte.ui.theme.BlueOscuro
 import com.example.lab5_diegoduarte.ui.theme.LAB5_DiegoDuarteTheme
 
+
+data class Venues(val name: String, val place:String)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Pantalla1()
+                    Pantalla2()
                 }
             }
         }
@@ -173,9 +184,87 @@ fun EventosConjuntos(artista1: String, fecha1: String, imagen1: Int, artista2: S
 }
 @Composable
 fun Pantalla2(){
+    val Lista = remember { mutableStateListOf<Venues>() }
+    Lista.add(Venues("Explanada Cayala", "Zona 16, Ciudad de Guatemala"))
+    Lista.add(Venues("Forum Majadas", "Zona 11, Ciudad de Guatemala"))
+    Lista.add(Venues("Parque de la Industria", "Zona 9, Ciudad de Guatemala"))
+    Lista.add(Venues("Foro Sol", " Iztacalco, Ciudad de México"))
 
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = BlueCito),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        LazyColumn {
+            items(Lista) { venue ->
+                Lugares(lugar = venue)
+            }
+        }
+    }
 }
 
+@Composable
+fun Lugares(lugar:Venues) {
+    val firstLetter = lugar.name.take(1).uppercase()
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(color = BlueCito)
+                    .align(Alignment.CenterVertically)
+                    .align(Alignment.CenterVertically)
+            ){
+                Text(
+                    text = firstLetter,
+                    style = androidx.compose.material.MaterialTheme.typography.h6,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .align(Alignment.Center),
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .padding(8.dp),
+                horizontalAlignment = Alignment.Start
+            ){
+                Text(
+                    text = lugar.name,
+                    style = androidx.compose.material.MaterialTheme.typography.h6,
+                    modifier = Modifier
+                        .padding(vertical = 2.dp),
+                    color = BlueOscuro,
+                    textAlign = TextAlign.Start
+                )
+                Text(
+                    text = lugar.place,
+                    style = androidx.compose.material.MaterialTheme.typography.body2,
+                    modifier = Modifier
+                        .padding(vertical = 2.dp),
+                    color = BlueOscuro,
+                    textAlign = TextAlign.Start
+                )
+            }
+            Button(
+                onClick = { /*TODO*/ },
+
+            ) {
+                Text("...")
+            }
+        }
+    }
+}
 @Composable
 fun Pantalla3(){
 
@@ -190,6 +279,6 @@ fun Pantalla4(){
 @Composable
 fun GreetingPreview() {
     LAB5_DiegoDuarteTheme {
-        Pantalla1()
+        Pantalla2()
     }
 }
