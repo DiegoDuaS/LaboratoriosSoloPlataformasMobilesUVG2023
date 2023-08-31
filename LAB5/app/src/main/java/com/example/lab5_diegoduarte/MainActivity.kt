@@ -378,7 +378,7 @@ fun Pantalla3(){
                         .padding(horizontal = 4.dp)
                 )
                 Text(
-                    text = "La gira de tour de Taylor número 6. La primera vez que esta en gira desde la pandemia. Es un concierto que te llevará por todas las eras de Taylor Swift desde sus origenes con el album 'Taylor Swift' hasta su era actual con '1989: Taylor's Version'. ",
+                    text = "La gira de tour de Taylor número 6. La primera vez que sale en gira desde la pandemia. Es un concierto que te llevará por todas las eras de Taylor Swift desde sus origenes con el album 'Taylor Swift' hasta su era actual con '1989: Taylor's Version'. ",
                     style =  androidx.compose.material.MaterialTheme.typography.subtitle2,
                     modifier = Modifier
                         .padding(vertical = 2.dp)
@@ -472,6 +472,6 @@ fun Pantalla4(){
 @Composable
 fun GreetingPreview() {
     LAB5_DiegoDuarteTheme {
-        Pantalla4()
+        Pantalla3()
     }
 }
