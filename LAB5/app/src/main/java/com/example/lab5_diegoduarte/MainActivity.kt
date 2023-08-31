@@ -26,15 +26,21 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -46,7 +52,6 @@ import com.example.lab5_diegoduarte.ui.theme.Fondo
 import com.example.lab5_diegoduarte.ui.theme.Fondo1
 import com.example.lab5_diegoduarte.ui.theme.LAB5_DiegoDuarteTheme
 import com.example.lab5_diegoduarte.ui.theme.Tarjetitas
-
 
 data class Venues(val name: String, val place:String)
 data class Conciertos(val name: String, val date: String, val image: Int)
@@ -65,7 +70,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Pantalla1()
                     //Pantalla2()
-                    Pantalla3()
+                    //Pantalla3()
+                    Pantalla4()
 
                 }
             }
@@ -414,6 +420,7 @@ fun Pantalla3(){
 
 @Composable
 fun Pantalla4(){
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -422,12 +429,13 @@ fun Pantalla4(){
     ){
         Box(
             modifier = Modifier
-                .size(400.dp)
-                .background(color = Color.Transparent),
-            contentAlignment = Alignment.Center,
+                .size(500.dp, 250.dp)
+                .background(color = Color.Transparent)
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomCenter,
         ) {
             Image(
-                painter = painterResource(id = R.drawable.fondouser),
+                painter = painterResource(id = R.drawable.fondouser1),
                 contentDescription = null,
                 modifier = Modifier
                     .size(400.dp),
@@ -435,35 +443,257 @@ fun Pantalla4(){
             )
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .align(Alignment.Center),
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(200.dp)
-                        .clip(CircleShape)
-                        .background(color = Fondo),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.usericon),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(200.dp),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-                Text(
-                    text = "USUARIO PRUEBA",
-                    style =  androidx.compose.material.MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .padding(vertical = 8.dp)
-                        .padding(horizontal = 4.dp),
-                    textAlign = TextAlign.Center
-                )
+                    .align(Alignment.Center)
+            ){
+            Image(
+                painter = painterResource(id = R.drawable.usericon1),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(150.dp)
+                    .padding(bottom = 0.dp),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = "USUARIO PRUEBA",
+                style =  androidx.compose.material.MaterialTheme.typography.h6,
+                modifier = Modifier
+                    .padding(vertical = 8.dp)
+                    .padding(horizontal = 4.dp),
+                textAlign = TextAlign.Center
+            )
             }
         }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 4.dp)
+                .background(color = Fondo)
+        ){
+            Card(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .background(color = Fondo)
+                    .fillMaxWidth()
+            ){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ){
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(color = Fondo1)
+                            .align(Alignment.CenterVertically)
+                            .align(Alignment.CenterVertically)
+                    ){
+                        Image(
+                            painter = painterResource(id = R.drawable.usericon1),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(40.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Text(
+                        text = "Editar Perfil",
+                        style = androidx.compose.material.MaterialTheme.typography.subtitle1,
+                        modifier = Modifier
+                            .padding(vertical = 2.dp),
+                        textAlign = TextAlign.Start
+                    )
+                    Button(
+                        onClick = { /*TODO*/ },
+                        colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
+
+                    ) {
+                        Text("...")
+                    }
+
+                }
+            }
+
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 2.dp)
+                .background(color = Fondo)
+        ){
+            Card(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .background(color = Fondo)
+                    .fillMaxWidth()
+            ){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ){
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(color = Fondo1)
+                            .align(Alignment.CenterVertically)
+                            .align(Alignment.CenterVertically)
+                    ){
+                        Image(
+                            painter = painterResource(id = R.drawable.usericon1),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(40.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Text(
+                        text = "Reiniciar Contraseña",
+                        style = androidx.compose.material.MaterialTheme.typography.subtitle1,
+                        modifier = Modifier
+                            .padding(vertical = 2.dp),
+                        textAlign = TextAlign.Start
+                    )
+                    Button(
+                        onClick = { /*TODO*/ },
+                        colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
+
+                    ) {
+                        Text("...")
+                    }
+
+                }
+            }
+
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 4.dp)
+                .background(color = Fondo)
+        ){
+            Card(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .background(color = Fondo)
+                    .fillMaxWidth()
+            ){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ){
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(color = Fondo1)
+                            .align(Alignment.CenterVertically)
+                            .align(Alignment.CenterVertically)
+                    ){
+                        Image(
+                            painter = painterResource(id = R.drawable.usericon1),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(40.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Text(
+                        text = "Notificaciones",
+                        style = androidx.compose.material.MaterialTheme.typography.subtitle1,
+                        modifier = Modifier
+                            .padding(vertical = 2.dp),
+                        textAlign = TextAlign.Start
+                    )
+                    val checkedState = remember { mutableStateOf(true) }
+                    Switch(
+                        checked = checkedState.value,
+                        onCheckedChange = { checkedState.value = it },
+                        modifier = Modifier
+                            .padding(0.dp),
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Color.White,
+                            checkedTrackColor = Fondo1,
+                            uncheckedThumbColor = Color.White,
+                            uncheckedTrackColor = Color.Black
+                        )
+                    )
+
+                }
+            }
+
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 4.dp)
+                .background(color = Fondo)
+        ){
+            Card(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .background(color = Fondo)
+                    .fillMaxWidth()
+            ){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ){
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(color = Fondo1)
+                            .align(Alignment.CenterVertically)
+                            .align(Alignment.CenterVertically)
+                    ){
+                        Image(
+                            painter = painterResource(id = R.drawable.usericon1),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(40.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Text(
+                        text = "Favoritos",
+                        style = androidx.compose.material.MaterialTheme.typography.subtitle1,
+                        modifier = Modifier
+                            .padding(vertical = 2.dp),
+                        textAlign = TextAlign.Start
+                    )
+                    Button(
+                        onClick = { /*TODO*/ },
+                        colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
+
+                    ) {
+                        Text("...")
+                    }
+
+                }
+            }
+
+        }
+
     }
 }
 
@@ -472,6 +702,6 @@ fun Pantalla4(){
 @Composable
 fun GreetingPreview() {
     LAB5_DiegoDuarteTheme {
-        Pantalla3()
+        Pantalla4()
     }
 }
