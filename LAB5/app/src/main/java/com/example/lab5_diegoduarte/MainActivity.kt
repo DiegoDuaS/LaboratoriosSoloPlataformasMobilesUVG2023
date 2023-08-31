@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
@@ -474,7 +475,10 @@ fun Pantalla4(){
                 modifier = Modifier
                     .padding(8.dp)
                     .background(color = Fondo)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Fondo1
+                )
             ){
                 Row(
                     modifier = Modifier
@@ -509,7 +513,7 @@ fun Pantalla4(){
                     )
                     Button(
                         onClick = { /*TODO*/ },
-                        colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
+                        colors = ButtonDefaults.buttonColors(containerColor = Tarjetitas)
 
                     ) {
                         Text("...")
