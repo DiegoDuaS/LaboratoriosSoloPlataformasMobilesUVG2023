@@ -63,8 +63,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Pantalla1()
+                    //Pantalla1()
                     //Pantalla2()
+                    Pantalla3()
+
                 }
             }
         }
@@ -101,7 +103,7 @@ fun Pantalla1(){
                 modifier = Modifier
                     .padding(bottom = 8.dp, top = 8.dp)
                     .align(Alignment.Center),
-                color = BlueOscuro
+                color = Color.White
             )
         }
         Text(
@@ -193,10 +195,10 @@ fun CardConcierto(concierto: Conciertos){
 @Composable
 fun Pantalla2(){
     val Lista = remember { mutableStateListOf<Venues>() }
-    Lista.add(Venues("Explanada Cayala", "Zona 16, Ciudad de Guatemala"))
-    Lista.add(Venues("Forum Majadas", "Zona 11, Ciudad de Guatemala"))
-    Lista.add(Venues("Parque de la Industria", "Zona 9, Ciudad de Guatemala"))
-    Lista.add(Venues("Foro Sol", " Iztacalco, Ciudad de México"))
+    Lista.add(Venues("Bad Bunny", "Explanada Cayala"))
+    Lista.add(Venues("Martin Garrix", "Forum Majadas"))
+    Lista.add(Venues("Latin Mafia", "Parque de la Industria"))
+    Lista.add(Venues("Taylor Swift", "Foro Sol"))
 
     Column(
         modifier = Modifier
@@ -237,11 +239,11 @@ fun Lugares(lugar:Venues) {
             ){
                 Text(
                     text = firstLetter,
-                    style = androidx.compose.material.MaterialTheme.typography.h6,
+                    style = androidx.compose.material.MaterialTheme.typography.body1,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .align(Alignment.Center),
-                    color = Color.Black,
+                    color = Color.White,
                 )
             }
             Column(
@@ -254,7 +256,6 @@ fun Lugares(lugar:Venues) {
                     style = androidx.compose.material.MaterialTheme.typography.h6,
                     modifier = Modifier
                         .padding(vertical = 2.dp),
-
                     textAlign = TextAlign.Start
                 )
                 Text(
@@ -278,18 +279,191 @@ fun Lugares(lugar:Venues) {
 }
 @Composable
 fun Pantalla3(){
-    
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = Fondo),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Box(
+            modifier = Modifier
+                .size(400.dp)
+                .background(color = Fondo1)
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.taylorswith),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(400.dp),
+                contentScale = ContentScale.Crop
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+        ){
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(color = Fondo)
+            ){
+                Text(
+                    text = "Taylor Swift: The Eras Tour - Night 2",
+                    style = androidx.compose.material.MaterialTheme.typography.h5,
+                    modifier = Modifier
+                        .padding(vertical = 2.dp),
+                    textAlign = TextAlign.Start
+                )
+                Text(
+                    text = "Foro Sol",
+                    style = androidx.compose.material.MaterialTheme.typography.subtitle1,
+                    modifier = Modifier
+                        .padding(vertical = 2.dp),
+                    textAlign = TextAlign.Start
+                )
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 4.dp)
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.calendaricon),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(25.dp),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = "25 de Agosto, 2023",
+                style =  androidx.compose.material.MaterialTheme.typography.subtitle1,
+                modifier = Modifier
+                    .padding(vertical = 2.dp)
+                    .padding(horizontal = 4.dp)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Image(
+                painter = painterResource(id = R.drawable.clockicon),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(20.dp),
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                text = "7:20 p.m",
+                style =  androidx.compose.material.MaterialTheme.typography.subtitle1,
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 4.dp)
+        ){
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(color = Fondo)
+            ){
+                Text(
+                    text = "ABOUT",
+                    style =  androidx.compose.material.MaterialTheme.typography.subtitle1,
+                    modifier = Modifier
+                        .padding(vertical = 2.dp)
+                        .padding(horizontal = 4.dp)
+                )
+                Text(
+                    text = "La gira de tour de Taylor número 6. La primera vez que esta en gira desde la pandemia. Es un concierto que te llevará por todas las eras de Taylor Swift desde sus origenes con el album 'Taylor Swift' hasta su era actual con '1989: Taylor's Version'. ",
+                    style =  androidx.compose.material.MaterialTheme.typography.subtitle2,
+                    modifier = Modifier
+                        .padding(vertical = 2.dp)
+                        .padding(horizontal = 4.dp),
+                    textAlign = TextAlign.Justify
+                )
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .padding(vertical = 4.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
+
+            ) {
+                Text("Favorito")
+            }
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
+
+            ) {
+                Text("Comprar")
+            }
+        }
+    }
 }
 
 @Composable
 fun Pantalla4(){
-
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = Fondo),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Box(
+            modifier = Modifier
+                .size(400.dp)
+                .background(color = Color.Transparent),
+            contentAlignment = Alignment.Center,
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.fondouser),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(400.dp),
+                contentScale = ContentScale.Crop
+            )
+            Box(
+                modifier = Modifier
+                    .size(200.dp)
+                    .clip(CircleShape)
+                    .background(color = Fondo),
+            ){
+                Image(
+                    painter = painterResource(id = R.drawable.usericon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(200.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
+            Text(
+                text = "USUARIO PRUEBA",
+                style =  androidx.compose.material.MaterialTheme.typography.h6,
+                modifier = Modifier
+                    .padding(vertical = 2.dp)
+                    .padding(horizontal = 4.dp),
+                textAlign = TextAlign.Start
+            )
+        }
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     LAB5_DiegoDuarteTheme {
-        Pantalla2()
+        Pantalla4()
     }
 }
