@@ -425,7 +425,7 @@ fun Pantalla4(){
                 .size(400.dp)
                 .background(color = Color.Transparent),
             contentAlignment = Alignment.Center,
-        ){
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.fondouser),
                 contentDescription = null,
@@ -433,28 +433,36 @@ fun Pantalla4(){
                     .size(400.dp),
                 contentScale = ContentScale.Crop
             )
-            Box(
+            Column(
                 modifier = Modifier
-                    .size(200.dp)
-                    .clip(CircleShape)
-                    .background(color = Fondo),
-            ){
-                Image(
-                    painter = painterResource(id = R.drawable.usericon),
-                    contentDescription = null,
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .align(Alignment.Center),
+            ) {
+                Box(
                     modifier = Modifier
-                        .size(200.dp),
-                    contentScale = ContentScale.Crop
+                        .size(200.dp)
+                        .clip(CircleShape)
+                        .background(color = Fondo),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.usericon),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(200.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+                Text(
+                    text = "USUARIO PRUEBA",
+                    style =  androidx.compose.material.MaterialTheme.typography.h6,
+                    modifier = Modifier
+                        .padding(vertical = 8.dp)
+                        .padding(horizontal = 4.dp),
+                    textAlign = TextAlign.Center
                 )
             }
-            Text(
-                text = "USUARIO PRUEBA",
-                style =  androidx.compose.material.MaterialTheme.typography.h6,
-                modifier = Modifier
-                    .padding(vertical = 2.dp)
-                    .padding(horizontal = 4.dp),
-                textAlign = TextAlign.Start
-            )
         }
     }
 }
