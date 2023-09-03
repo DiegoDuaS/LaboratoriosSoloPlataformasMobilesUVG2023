@@ -228,7 +228,10 @@ fun Lugares(lugar:Venues) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .background(color = Fondo)
+            .background(color = Fondo),
+        colors = CardDefaults.cardColors(
+            containerColor = Fondo1
+        )
     ) {
         Row(
             modifier = Modifier
@@ -240,17 +243,17 @@ fun Lugares(lugar:Venues) {
                 modifier = Modifier
                     .size(40.dp)
                     .clip(CircleShape)
-                    .background(color = Fondo1)
+                    .background(color = Fondo)
                     .align(Alignment.CenterVertically)
                     .align(Alignment.CenterVertically)
             ){
                 Text(
                     text = firstLetter,
-                    style = androidx.compose.material.MaterialTheme.typography.body1,
+                    style = androidx.compose.material.MaterialTheme.typography.h6,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .align(Alignment.Center),
-                    color = Color.White,
+                    color = Color.Black,
                 )
             }
             Column(
@@ -263,15 +266,16 @@ fun Lugares(lugar:Venues) {
                     style = androidx.compose.material.MaterialTheme.typography.h6,
                     modifier = Modifier
                         .padding(vertical = 2.dp),
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Start,
+                    color = Color.White
                 )
                 Text(
                     text = lugar.place,
                     style = androidx.compose.material.MaterialTheme.typography.body2,
                     modifier = Modifier
                         .padding(vertical = 2.dp),
-                    color = BlueOscuro,
-                    textAlign = TextAlign.Start
+                    color = Color.White,
+                    textAlign = TextAlign.Start,
                 )
             }
             Button(
@@ -460,7 +464,8 @@ fun Pantalla4(){
                 modifier = Modifier
                     .padding(vertical = 8.dp)
                     .padding(horizontal = 4.dp),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White
             )
             }
         }
@@ -492,12 +497,12 @@ fun Pantalla4(){
                         modifier = Modifier
                             .size(40.dp)
                             .clip(CircleShape)
-                            .background(color = Fondo1)
+                            .background(color = Color.White)
                             .align(Alignment.CenterVertically)
                             .align(Alignment.CenterVertically)
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.usericon1),
+                            painter = painterResource(id = R.drawable.usericon),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(40.dp),
@@ -509,11 +514,12 @@ fun Pantalla4(){
                         style = androidx.compose.material.MaterialTheme.typography.subtitle1,
                         modifier = Modifier
                             .padding(vertical = 2.dp),
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Start,
+                        color = Color.White
                     )
                     Button(
                         onClick = { /*TODO*/ },
-                        colors = ButtonDefaults.buttonColors(containerColor = Tarjetitas)
+                        colors = ButtonDefaults.buttonColors(containerColor = Fondo1)
 
                     ) {
                         Text("...")
@@ -534,7 +540,10 @@ fun Pantalla4(){
                 modifier = Modifier
                     .padding(8.dp)
                     .background(color = Fondo)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Fondo1
+                )
             ){
                 Row(
                     modifier = Modifier
@@ -548,12 +557,12 @@ fun Pantalla4(){
                         modifier = Modifier
                             .size(40.dp)
                             .clip(CircleShape)
-                            .background(color = Fondo1)
+                            .background(color = Color.White)
                             .align(Alignment.CenterVertically)
                             .align(Alignment.CenterVertically)
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.usericon1),
+                            painter = painterResource(id = R.drawable.lockicon),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(40.dp),
@@ -565,7 +574,8 @@ fun Pantalla4(){
                         style = androidx.compose.material.MaterialTheme.typography.subtitle1,
                         modifier = Modifier
                             .padding(vertical = 2.dp),
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Start,
+                        color = Color.White
                     )
                     Button(
                         onClick = { /*TODO*/ },
@@ -590,7 +600,10 @@ fun Pantalla4(){
                 modifier = Modifier
                     .padding(8.dp)
                     .background(color = Fondo)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Fondo1
+                )
             ){
                 Row(
                     modifier = Modifier
@@ -604,12 +617,12 @@ fun Pantalla4(){
                         modifier = Modifier
                             .size(40.dp)
                             .clip(CircleShape)
-                            .background(color = Fondo1)
+                            .background(color = Color.White)
                             .align(Alignment.CenterVertically)
                             .align(Alignment.CenterVertically)
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.usericon1),
+                            painter = painterResource(id = R.drawable.bellicon),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(40.dp),
@@ -621,7 +634,8 @@ fun Pantalla4(){
                         style = androidx.compose.material.MaterialTheme.typography.subtitle1,
                         modifier = Modifier
                             .padding(vertical = 2.dp),
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Start,
+                        color = Color.White
                     )
                     val checkedState = remember { mutableStateOf(true) }
                     Switch(
@@ -631,7 +645,7 @@ fun Pantalla4(){
                             .padding(0.dp),
                         colors = SwitchDefaults.colors(
                             checkedThumbColor = Color.White,
-                            checkedTrackColor = Fondo1,
+                            checkedTrackColor = Fondo,
                             uncheckedThumbColor = Color.White,
                             uncheckedTrackColor = Color.Black
                         )
@@ -652,7 +666,10 @@ fun Pantalla4(){
                 modifier = Modifier
                     .padding(8.dp)
                     .background(color = Fondo)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Fondo1
+                )
             ){
                 Row(
                     modifier = Modifier
@@ -666,12 +683,12 @@ fun Pantalla4(){
                         modifier = Modifier
                             .size(40.dp)
                             .clip(CircleShape)
-                            .background(color = Fondo1)
+                            .background(color = Color.White)
                             .align(Alignment.CenterVertically)
                             .align(Alignment.CenterVertically)
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.usericon1),
+                            painter = painterResource(id = R.drawable.staricon),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(40.dp),
@@ -683,7 +700,8 @@ fun Pantalla4(){
                         style = androidx.compose.material.MaterialTheme.typography.subtitle1,
                         modifier = Modifier
                             .padding(vertical = 2.dp),
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Start,
+                        color = Color.White
                     )
                     Button(
                         onClick = { /*TODO*/ },
@@ -706,6 +724,6 @@ fun Pantalla4(){
 @Composable
 fun GreetingPreview() {
     LAB5_DiegoDuarteTheme {
-        Pantalla4()
+        Pantalla2()
     }
 }
