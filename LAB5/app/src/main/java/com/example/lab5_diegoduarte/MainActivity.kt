@@ -57,6 +57,7 @@ import com.example.lab5_diegoduarte.ui.theme.Tarjetitas
 data class Venues(val name: String, val place:String)
 data class Conciertos(val name: String, val date: String, val image: Int)
 
+//Prueba Committ Lab 6
 class MainActivity : ComponentActivity() {
 
 
